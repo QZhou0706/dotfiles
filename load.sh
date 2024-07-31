@@ -1,5 +1,10 @@
 #!/bin/bash
 
-ln -s /Users/aric/dotfiles/vim/vimrc ~/.vimrc
-ln -s /Users/aric/dotfiles/zsh/zshrc ~/.zshrc
-ln -s /Users/aric/dotfiles/kitty ~/.config/kitty
+rm ~/.vimrc
+ln -s ./vimrc ~/.vimrc
+rm ~/.zshrc
+ln -s ./zshrc ~/.zshrc
+rm ~/.config/kitty
+ln -s ./kitty ~/.config/kitty
+rm ~/.config/nvim
+ln -s ./nvim ~/.config/nvim
