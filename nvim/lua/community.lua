@@ -8,7 +8,10 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
   { import = "astrocommunity.completion.cmp-cmdline" },
+  { import = "astrocommunity.indent.mini-indentscope" },
+
   { import = "astrocommunity.pack.go" },
+  { import = "astrocommunity.recipes.telescope-lsp-mappings" },
   { import = "astrocommunity.utility.noice-nvim" },
   -- import/override with your plugins folder
 }

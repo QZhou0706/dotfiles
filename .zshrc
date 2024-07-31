@@ -1,1 +1,0 @@
-/Users/aric/dotfiles/zsh/zshrc
