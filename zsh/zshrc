@@ -121,6 +121,7 @@ alias du="dust"
 alias find="fd"
 alias icat="kitten icat"
 alias ls="lsd"
+alias nv="nvim"
 alias p="procs"
 alias top="btm"
 
