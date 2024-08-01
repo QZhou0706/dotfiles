@@ -32,6 +32,7 @@ return {
         provider = "",
       },
     }
+    local Filename = vim.api.nvim_buf_get_name
 
     opts.statusline = { -- statusline
       hl = { fg = "fg", bg = "bg" },

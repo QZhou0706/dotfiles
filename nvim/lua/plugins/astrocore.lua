@@ -47,6 +47,7 @@ return {
         -- navigate buffer tabs
         ["<S-l>"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["<S-h>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        ["gr"] = { function() require("telescope.builtin").lsp_references() end, desc = "Search References" },
 
         -- mappings seen under group name "Buffer"
         ["<Leader>bd"] = {
@@ -64,6 +65,9 @@ return {
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
+        ["gra"] = false,
+        ["grn"] = false,
+        ["grr"] = false,
       },
     },
   },

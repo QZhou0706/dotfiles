@@ -125,7 +125,7 @@ alias nv="nvim"
 alias p="procs"
 alias top="btm"
 
-source $HOME/Env/script/path.sh
+source $HOME/dotfiles/scripts/path.sh
 
 defaults write -g KeyRepeat -int 1 #default 2
 defaults write -g InitialKeyRepeat -int 10 #default 10
