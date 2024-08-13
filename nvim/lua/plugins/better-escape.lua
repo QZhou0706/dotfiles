@@ -5,7 +5,7 @@ return {
       i = {
         k = {
           j = "<Esc>",
-          k = "<Esc>",
+          -- k = "<Esc>",
         },
       },
     },

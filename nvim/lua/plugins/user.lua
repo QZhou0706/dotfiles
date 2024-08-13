@@ -13,8 +13,19 @@ return {
     config = function() require("lsp_signature").setup() end,
   },
 
-  -- == Examples of Overriding Plugins ==
-
+  {
+    "echasnovski/mini.icons",
+    specs = { { "nvim-tree/nvim-web-devicons", enabled = false, optional = true } },
+    opts = {
+      style = "glyph",
+    },
+    init = function()
+      package.preload["nvim-web-devicons"] = function()
+        require("mini.icons").mock_nvim_web_devicons()
+        return package.loaded["nvim-web-devicons"]
+      end
+    end,
+  },
   -- customize alpha options
   {
     "goolord/alpha-nvim",

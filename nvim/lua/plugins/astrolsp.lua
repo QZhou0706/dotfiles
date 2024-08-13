@@ -11,7 +11,7 @@ return {
     -- Configuration table of features provided by AstroLSP
     features = {
       codelens = true, -- enable/disable codelens refresh on start
-      inlay_hints = false, -- enable/disable inlay hints on start
+      inlay_hints = true, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
     },
     -- customize lsp formatting options
@@ -51,10 +51,48 @@ return {
 
       -- the key is the server that is being setup with `lspconfig`
       -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
+      rust_analyzer = {
+        settings = {
+          ["rust_analyzer"] = {
+            cargo = {
+              extraEnv = { CARGO_PROFILE_RUST_ANALYZER_INHERITS = "dev" },
+              extraArgs = { "--profile", "rust-analyzer" },
+            },
+            check = {
+              command = "check",
+            },
+          },
+        },
+      },
       -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
+      no_insert_inlay_hints = {
+        -- only create for language servers that support inlay hints
+        -- (and only if vim.lsp.inlay_hint is available)
+        cond = vim.lsp.inlay_hint and "textDocument/inlayHint" or false,
+        {
+          -- when going into insert mode
+          event = "InsertEnter",
+          desc = "disable inlay hints on insert",
+          callback = function(args)
+            local filter = { bufnr = args.buf }
+            -- if the inlay hints are currently enabled
+            if vim.lsp.inlay_hint.is_enabled(filter) then
+              -- disable the inlay hints
+              vim.lsp.inlay_hint.enable(false, filter)
+              -- create a single use autocommand to turn the inlay hints back on
+              -- when leaving insert mode
+              vim.api.nvim_create_autocmd("InsertLeave", {
+                buffer = args.buf,
+                once = true,
+                callback = function() vim.lsp.inlay_hint.enable(true, filter) end,
+              })
+            end
+          end,
+        },
+      },
       -- first key is the `augroup` to add the auto commands to (:h augroup)
       lsp_codelens_refresh = {
         -- Optional condition to create/delete auto command group
@@ -74,6 +112,7 @@ return {
           end,
         },
       },
+      eslint_fix_on_save = false,
     },
     -- mappings to be set up on attaching of a language server
     mappings = {
