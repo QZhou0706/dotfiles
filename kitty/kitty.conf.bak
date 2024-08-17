@@ -30,7 +30,7 @@ italic_font			  auto
 bold_italic_font	auto
 # symbol_map U+4E00-U+9FFF,U+3400-U+4DBF Sarasa Term SC Nerd
 
-font_size 18
+font_size 16
 
 #: Font size (in pts).
 
@@ -1166,7 +1166,7 @@ background_opacity 0.9
 #: this option when reloading the config will only work if
 #: dynamic_background_opacity was enabled in the original config.
 
-background_blur 56
+background_blur 64
 
 #: Set to a positive value to enable background blur (blurring of the
 #: visuals behind a transparent window) on platforms that support it.
@@ -2513,6 +2513,6 @@ macos_custom_beam_cursor yes
 
 
 # BEGIN_KITTY_THEME
-# Nightfox
+# Tokyo Night Moon
 include current-theme.conf
 # END_KITTY_THEME

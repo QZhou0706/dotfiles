@@ -1,5 +1,3 @@
-if true then return {} end
-
 return {
   "rebelot/heirline.nvim",
   opts = function(_, opts)
@@ -34,7 +32,6 @@ return {
         provider = "",
       },
     }
-    local Filename = vim.api.nvim_buf_get_name
 
     opts.statusline = { -- statusline
       hl = { fg = "fg", bg = "bg" },
@@ -52,7 +49,7 @@ return {
       },
       status.component.git_branch(),
       status.component.file_info(),
-      status.component.git_diff(),
+      -- status.component.git_diff(),
       status.component.diagnostics(),
       status.component.builder(WorkDir),
       status.component.fill(),
