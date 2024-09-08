@@ -1,5 +1,4 @@
 -- Customize Mason plugins
-
 ---@type LazySpec
 return {
   -- use mason-lspconfig to configure LSP installations
@@ -10,7 +9,7 @@ return {
       ensure_installed = {
         "lua_ls",
         "gopls",
-        -- add more arguments for adding more language servers
+        "rust_analyzer",
       },
     },
   },
@@ -21,6 +20,7 @@ return {
     opts = {
       ensure_installed = {
         "stylua",
+        -- "rustfmt",
         -- add more arguments for adding more null-ls sources
       },
     },

@@ -23,6 +23,7 @@ return {
           -- "go",
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
+          -- "rust",
           -- "python",
         },
       },
@@ -42,7 +43,21 @@ return {
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
-      -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      clangd = { capabilities = { offsetEncoding = "utf-8" } },
+
+      -- rust_analyzer = {
+      --   settings = {
+      --     ["rust_analyzer"] = {
+      --       cargo = {
+      --         extraEnv = { CARGO_PROFILE_RUST_ANALYZER_INHERITS = "dev" },
+      --         extraArgs = { "--profile", "rust-analyzer" },
+      --       },
+      --       check = {
+      --         command = "check",
+      --       },
+      --     },
+      --   },
+      -- },
     },
     -- customize how language servers are attached
     handlers = {
@@ -51,19 +66,6 @@ return {
 
       -- the key is the server that is being setup with `lspconfig`
       -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
-      rust_analyzer = {
-        settings = {
-          ["rust_analyzer"] = {
-            cargo = {
-              extraEnv = { CARGO_PROFILE_RUST_ANALYZER_INHERITS = "dev" },
-              extraArgs = { "--profile", "rust-analyzer" },
-            },
-            check = {
-              command = "check",
-            },
-          },
-        },
-      },
       -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
     },
     -- Configure buffer local auto commands to add when attaching a language server

@@ -40,7 +40,6 @@ return {
     -- Mappings can be configured through AstroCore as well.
     -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
     mappings = {
-      -- first key is the mode
       n = {
         -- second key is the lefthand side of the map
 
@@ -59,6 +58,9 @@ return {
           desc = "Close buffer from tabline",
         },
 
+        ["<C-'>"] = { "<Cmd>ToggleTerm size=18 direction=horizontal<CR>", desc = "ToggleTerm horizontal split" },
+        ["<C-/>"] = { "<Cmd>ToggleTerm direction=float<CR>", desc = "ToggleTerm float" },
+
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
@@ -68,6 +70,14 @@ return {
         ["gra"] = false,
         ["grn"] = false,
         ["grr"] = false,
+      },
+      i = {
+        ["<C-'>"] = { "<Cmd>ToggleTerm size=18 direction=horizontal<CR>", desc = "ToggleTerm horizontal split" },
+        ["<C-/>"] = { "<Cmd>ToggleTerm direction=float<CR>", desc = "ToggleTerm float" },
+      },
+      t = {
+        ["<C-'>"] = { "<Cmd>ToggleTerm<CR>", desc = "Toggle terminal" },
+        ["<C-/>"] = { "<Cmd>ToggleTerm<CR>", desc = "Toggle terminal" },
       },
     },
   },
